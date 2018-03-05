@@ -1,0 +1,66 @@
+<div class="scheme-list" ng-if="$ctrl.isScheme">
+    <h2>Улица</h2>
+    <ul>
+        <li ng-repeat="scheme in $ctrl.schemelist" class="scheme-list__item">
+            {{scheme.name}}
+            <a href
+               ui-sref="admin.schemeUpdate({ schemeId: scheme.id })"
+               class="scheme-list__item_edit">
+                <i class="glyphicon glyphicon-pencil"></i>
+            </a>
+            <a href ng-click="$ctrl.removeScheme(scheme)" class="scheme-list__item_delete">
+                <i class="glyphicon glyphicon-remove"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+<div class="scheme_wrapper" ng-show="!$ctrl.isScheme">
+    <h1>Создание карты</h1>
+    <div class="uploaded-form" ng-if="!$ctrl.showForm">
+        <div class="uploaded-form__wrapper">
+            <div class="category__item_label">Загрузите изображение карты улицы</div>
+            <input type="file" nv-file-select="" uploader="$ctrl.uploader"/>
+        </div>
+    </div>
+    <div id="container"></div>
+    <div class="scheme container" ng-if="$ctrl.showForm" novalidate>
+        <form name="schemeForm">
+            <div class="row">
+                <div class="scheme-form__item col-md-4">
+                    <div class="category__item_label">Название карты улицы</div>
+                    <input name="name" ng-model="$ctrl.model.name" class="scheme-form__item_input" required>
+                </div>
+            </div>
+            <div class="building-list row">
+                <building-form-component ng-repeat="building in $ctrl.model.buildings"
+                                         building="building"
+                                         class="floor-form__item  col-md-4"></building-form-component>
+                <div class="scheme-form__item  col-md-4">
+                    <a href ng-click="$ctrl.addBuilding()" class="scheme-list__btn"><i
+                            class="glyphicon glyphicon-plus-sign"></i></a>
+                </div>
+            </div>
+            <div class="form__btns">
+                <div class="form__btns_btn">
+                    <button ng-click="$ctrl.cancel()">
+                        Отменить
+                        <i class="glyphicon glyphicon-ban-circle" aria-hidden="true"></i>
+                    </button>
+                </div>
+                <div class="form__btns_btn">
+                    <button ng-click="$ctrl.saveScheme()" ng-disabled="albumForm.$invalid">
+                        Сохранить карту
+                        <i class="glyphicon glyphicon-ok-sign" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="popup" ng-if="$ctrl.formError">
+            <span class="popup__btn_close" ng-click="$ctrl.closePopup()"><i
+                    class="glyphicon glyphicon-remove"></i></span>
+        <div class="popup__msg">
+            {{$ctrl.popupMsg}}
+        </div>
+    </div>
+</div>

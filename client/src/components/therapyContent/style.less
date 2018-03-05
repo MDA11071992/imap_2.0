@@ -1,0 +1,76 @@
+.therapy__content {
+  position: relative;
+  h1 {
+    width: 74%;
+    padding: 0 15px 10px 10px;
+    margin-bottom: 10px;
+    text-align: left;
+    color: green;
+    font-size: 3.2rem;
+    font-weight: bold;
+  }
+  .therapy__cards {
+    margin: 0 auto;
+    .therapy__list {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      .therapy__list__item {
+        position: relative;
+        align-self: flex-start;
+        width: 300px;
+        height: 300px;
+        overflow: hidden;
+        margin: 10px;
+        padding: 20px 0;
+        border: 2px solid green;
+        border-radius: 30px;
+        cursor: pointer;
+        text-align: center;
+        box-shadow: 2px 2px green, 4px 4px green;
+        top: -4px;
+        left: -4px;
+
+        img {
+          border: 2px solid green;
+          border-radius: 10px;
+        }
+
+        .therapy__list__item_title {
+          padding: 0 15px;
+          margin: 10px 0;
+          overflow: hidden;
+          font-size: 1.6rem;
+          font-style: italic;
+          font-weight: bold;
+          color: green;
+        }
+        .therapy__list__item_title--middle {
+          position: absolute;
+          top: 45%;
+          left: 50%;
+          transform: translate(-50%);
+
+        }
+      }
+    }
+  }
+  .therapy__subtherapy__content {
+    &_movie {
+      text-align: center;
+    }
+  }
+      table {
+      border-collapse: collapse;
+    }
+
+    table, th, td {
+      border: 1px solid black;
+    }
+    th, td {
+      text-align: center;
+      padding: 5px;
+    }
+}

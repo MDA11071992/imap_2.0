@@ -1,0 +1,17 @@
+<form name="buildingForm" class="building-form" ng-class="{'no-valid': $ctrl.building.noValid}">
+    <a href class="building-form__close" ng-click="$ctrl.removeBuilding()"><i class="glyphicon glyphicon-remove-circle"></i></a>
+     <div class="scheme-form__item">
+        <h4>Название здания</h4>
+        <input name="name" ng-model="$ctrl.building.name" ng-change="$ctrl.clearErrors()" required>
+     </div>
+    <div>
+        <label for="isPassageway">Проход в здание</label>
+        <input type="checkbox" id="isPassageway" ng-model="$ctrl.building.isPassageway">
+    </div>
+    Укажите координаты здания
+    <select-coordinate-component
+        coordinate="$ctrl.building.coordinate"
+        name="building"
+    </select-coordinate-component>
+</form>
+

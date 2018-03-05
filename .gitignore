@@ -1,0 +1,31 @@
+# Logs
+logs
+*.log
+
+#varant files
+.vagrant
+
+# Optional IDE
+.idea
+
+#medial filed from django
+media
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.pyc
+*.rdb
+
+.DS_Store
+*.stackdump
+npm-debug.log
+
+client/index.html
+client/src/config.locale.js
+bower_components/
+node_modules/
+dist/
+interactive_map.iml
+imap/info/migrations/*
+imap/api/migrations/*

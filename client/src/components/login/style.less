@@ -1,0 +1,32 @@
+.login-form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 350px;
+  min-height: 300px;
+  .login-form__item {
+    margin: 10px 0;
+    input {
+      border-color: green;
+    }
+    .form-control.error {
+       border-color: red;
+    }
+  }
+  button {
+    margin-top: 10px;
+    background-color: green;
+    border-color: green;
+    &:hover {
+      background-color: #fff;
+      color: green;
+      border-color: green;
+    }
+  }
+  p {
+    margin-top: 5px;
+    font-size: 12px;
+    color: red;
+  }
+}

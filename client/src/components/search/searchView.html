@@ -1,0 +1,15 @@
+<div class="search">
+    <div class="search__input">
+        <angucomplete-alt
+                id="search"
+                placeholder="Поиск"
+                pause="100"
+                selected-object="$ctrl.selectedRoom"
+                remote-url="{{$ctrl.api}}roomlist/?search="
+
+                description-field="number"
+                minlength="1"
+                input-class="form-control form-control-small"/>
+    </div>
+</div>
+

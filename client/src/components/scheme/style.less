@@ -1,0 +1,31 @@
+.scheme-list {
+  h2 {
+    text-align: left;
+    font-size: 3rem;
+    padding-left: 20px;
+    font-style: italic;
+    color: green;
+  }
+  ul {
+    list-style: none;
+  }
+  .scheme-list__item {
+    font-size: 20px;
+    &_edit {
+      padding: 3px;
+      color: green;
+      &:hover {
+        color: blue;
+        text-decoration: none;
+      }
+    }
+    &_delete {
+      padding: 3px;
+      color: red;
+      &:hover {
+        color: blue;
+        text-decoration: none;
+      }
+    }
+  }
+}

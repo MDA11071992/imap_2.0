@@ -1,0 +1,27 @@
+<div class="therapy__content">
+    <h1>{{::$ctrl.item.name}}</h1>
+    <div class="therapy__cards" ng-if="!$ctrl.subtherapy">
+        <ul class="therapy__list">
+            <li ng-repeat="subtherapy in ::$ctrl.item.therapy"
+                ui-sref="app.main.therapy.treat.subtherapy({subTherapyId: subtherapy.id})"
+                class="therapy__list__item">
+                <img ng-show="subtherapy.images[0].image" src="{{subtherapy.images[0].image}}" alt="" width="260" height="200">
+                <div class="therapy__list__item_title" ng-class="{'therapy__list__item_title--middle': !subtherapy.images[0].image }">{{subtherapy.name}}</div>
+            </li>
+        </ul>
+    </div>
+    <div class="therapy__subtherapy__content" ng-if="$ctrl.subtherapy">
+        <span class="content__btn_route" ui-sref="app.route({room: $ctrl.item.room})" ng-if="$ctrl.item.room">Показать маршрут <i class="glyphicon glyphicon-road"></i></span>
+        <flex-slider slide="image in $ctrl.item.images track by image.id" animation="slide" touch="true">
+            <li>
+                <img ng-src="{{image.image}}">
+            </li>
+        </flex-slider>
+        <div class="therapy__subtherapy__content_movie" ng-if="$ctrl.item.movie">
+            <video width="600" autoplay>
+                <source src="{{::$ctrl.item.movie}}" type="video/mp4">
+            </video>
+        </div>
+        <p class="therapy__subtherapy__content_description" ng-bind-html="$ctrl.item.description | toTrusted"></p>
+    </div>
+</div>

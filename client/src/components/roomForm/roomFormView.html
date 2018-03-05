@@ -1,0 +1,13 @@
+<form name="roomForm" class="room-form" ng-class="{'no-valid': $ctrl.room.noValid}">
+    <a href class="room-form__close" ng-click="$ctrl.removeRoom()"><i class="glyphicon glyphicon-remove-circle"></i></a>
+     <p class="room-form__item">
+        <h5>Номер комнаты</h5>
+        <input name="number" ng-model="$ctrl.room.number" ng-change="$ctrl.clearErrors()" required>
+     </div>
+    <h5>Укажите координаты</h5>
+    <select-coordinate-component
+        coordinate="$ctrl.room.coordinate"
+        name="room">
+    </select-coordinate-component>
+</form>
+

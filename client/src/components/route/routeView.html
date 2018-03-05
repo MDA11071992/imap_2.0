@@ -1,0 +1,36 @@
+<div class="preloader"
+     ng-show="$ctrl.currentFloor && $ctrl.loading">
+    <img src="../../../dist/img/preloader.gif" alt="">
+</div>
+<search-component
+        ng-if="!$ctrl.currentFloor"
+        selected-room="$ctrl.selectedRoom">
+</search-component>
+
+<div class="route__btn"
+     ng-if="$ctrl.selectedRoom | isEmpty:false"
+     ng-click="$ctrl.getPath()">
+    <h3 ng-if="$ctrl.selectedRoom.originalObject.subtherapies.length">{{$ctrl.selectedRoom.originalObject.subtherapies[0].name}}, {{$ctrl.selectedRoom.originalObject.number}}</h3>
+    <h3 ng-if="!$ctrl.selectedRoom.originalObject.subtherapies.length">{{$ctrl.selectedRoom.originalObject.number}}</h3>
+    <a href> Построить маршрут <i class="glyphicon glyphicon-search"></i></a>
+</div>
+
+<div class="map" ng-show="$ctrl.currentFloor && !$ctrl.loading">
+    <a href ui-sref="app.route" ui-sref-opts="{reload: true, notify: true, inherit: false}" class="map__cancel">Найти новый маршрут</a>
+    <div id="mapContainer"></div>
+    <div class="map__navigation_wrapper" ng-if="$ctrl.mapSlides.length > 1">
+        <div class="map__navigation">
+            <a class="map__navigation__tool" ng-click="$ctrl.slideToLeft()" ng-class="{'map__navigation__tool_disabled': $ctrl.activeSlide == 0 }" ><i
+                    class="glyphicon glyphicon-arrow-left"></i></a>
+            <div class="map__navigation__step">
+                <a href ng-click="$ctrl.selectSlide($index)" ng-repeat="step in $ctrl.mapSlides"
+                   class="map__navigation__step_item" ng-class="{'map__navigation__step_item-active': $ctrl.activeSlide == $index}">Шаг {{$index + 1}}</a>
+            </div>
+            <a class="map__navigation__tool" ng-click="$ctrl.slideToRight()" ng-class="{'map__navigation__tool_disabled': $ctrl.activeSlide == $ctrl.mapSlides.length - 1 }">
+                <i class="glyphicon glyphicon-arrow-right"></i></a>
+        </div>
+    </div>
+</div>
+
+
+

@@ -1,0 +1,24 @@
+<div class="container">
+    <form name="loginForm" role="form" class="login-form" novalidate>
+        <h3>Авторизация</h3>
+        <div class="login-form__item">
+            <label>Имя</label>
+            <input type="text" class="form-control"
+                   ng-class="{'error': $ctrl.error}"
+                   ng-focus="$ctrl.clearErrors()"
+                   name="username"
+                   ng-model="$ctrl.user.username" required/>
+        </div>
+        <div class="login-form__item">
+            <label>Пароль</label>
+            <input type="password"
+                   class="form-control"
+                   ng-class="{'error': $ctrl.error}"
+                   ng-focus="$ctrl.clearErrors()"
+                   name="password"
+                   ng-model="$ctrl.user.password" required/>
+        </div>
+        <button class="btn btn-primary" ng-click="$ctrl.handleLoginBtnClick()" ng-disabled="loginForm.$invalid">Войти</button>
+        <p ng-show="$ctrl.msg">{{$ctrl.msg}}</p>
+    </form>
+</div>

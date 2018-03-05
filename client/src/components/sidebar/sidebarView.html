@@ -1,0 +1,22 @@
+<div ng-if="$ctrl.name == 'services'">
+    <ul class="sidebar__list sidebar__list_press">
+        <li ng-repeat="item in ::$ctrl.list" ui-sref-active="active" class="sidebar__list__item sidebar__list__item_press"><a href ui-sref="app.main.services.service({id: item.id})" class="animation__press-btn">{{item.name}}</a></li>
+    </ul>
+</div>
+
+<div ng-if="$ctrl.name == 'rooms'">
+    <ul class="sidebar__list">
+        <li ng-repeat="item in ::$ctrl.list" ui-sref-active="active" class="sidebar__list__item sidebar__list__item_press"><a href ui-sref="app.main.rooms.room({id: item.id})" class="animation__press-btn">{{item.name}}</a></li>
+    </ul>
+</div>
+
+<div ng-if="$ctrl.name == 'therapy'">
+    <ul class="sidebar__list">
+        <li ng-repeat="item in $ctrl.list" ui-sref-active="active" class="sidebar__list__item slide animation">
+            <a href ui-sref="app.main.therapy.treat({therapyId: item.id})" ng-click="item.checked = true">{{item.name}}</a>
+            <ul class="sidebar__sublist">
+                <li ng-repeat="subtherapy in ::item.therapy" ng-if="item.checked" ui-sref-active="active"  class="sidebar__sublist__item"><a href ui-sref="app.main.therapy.treat.subtherapy({subTherapyId: subtherapy.id})">{{subtherapy.name}}</a></li>
+            </ul>
+        </li>
+    </ul>
+</div>

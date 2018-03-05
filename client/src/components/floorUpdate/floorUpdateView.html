@@ -1,0 +1,87 @@
+<div class="preloader__save"
+     ng-show="$ctrl.isLoading">
+    <img src="../../../dist/img/preloader.gif" alt="">
+</div>
+<div class="floor__wrapper">
+    <h1>Редактирование схемы этажа</h1>
+    <div id="container" class="floor-update"></div>
+    <form class="floor-form container" name="floorForm" novalidate ng-if="$ctrl.showForm">
+        <div class="row">
+            <div class="floor-form__item col-md-3">
+                <h5>Введите номер этажа</h5>
+                <input class="floor-form__item_input" name="number" ng-model="$ctrl.model.number" required>
+            </div>
+            <div class="floor-form__item col-md-3">
+                <h5 class="category__item_label">Загрузить карту</h5>
+                <input type="file" nv-file-select="" uploader="$ctrl.uploader"/>
+            </div>
+            <div class="floor-form__item col-md-3">
+                <div class="entrance">
+                    <h5>Вход/выход</h5>
+                    <select-coordinate-component
+                            coordinate="$ctrl.model.entrance"
+                            name="entrance">
+                    </select-coordinate-component>
+                </div>
+            </div>
+            <div class="floor-form__item col-md-3">
+                <div class="terminal" ng-if="$ctrl.model.terminal">
+                    <a href class="terminal__close" ng-click="$ctrl.removeTerminal()"><i class="glyphicon glyphicon-remove-circle"></i></a>
+                    <div class="terminal___coordinates">
+                        <h5>Терминал</h5>
+                        <select-coordinate-component
+                                coordinate="$ctrl.model.terminal.coordinate"
+                                name="terminal">
+                        </select-coordinate-component>
+                    </div>
+                </div>
+            </div>
+            <div class="floor-form__item col-md-3">
+                <div class="passageway" ng-if="$ctrl.model.passageway">
+                    <a href class="terminal__close" ng-click="$ctrl.removePassageway()"><i class="glyphicon glyphicon-remove-circle"></i></a>
+                    <h5>Проход</h5>
+                    <select-coordinate-component
+                            coordinate="$ctrl.model.passageway.coordinate"
+                            name="passageway">
+                    </select-coordinate-component>
+                    <div class="passageway__building">
+                        <h5>Выберите здание к которому ведет проход</h5>
+                        <select name="building" id="to-building" ng-model="$ctrl.model.passageway.toBuildingId"  ng-options="option.id as option.name for option in $ctrl.buildings">
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="floor-list row">
+            <h4>Список комнат</h4>
+            <room-form-component ng-repeat="room in $ctrl.model.rooms" room="room"
+                                 class="floor-form__item  col-md-3">
+            </room-form-component>
+            <div class="floor-form__item  col-md-3">
+                <a href ng-click="$ctrl.addRoom()" class="floor-list__btn"><i class="glyphicon glyphicon-plus-sign"></i></a>
+            </div>
+
+        </div>
+        <div class="form__btns">
+            <div class="form__btns_btn">
+                <button ng-click="$ctrl.cancel()">
+                    Отменить
+                    <i class="glyphicon glyphicon-ban-circle" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div class="form__btns_btn">
+                <button ng-click="$ctrl.saveFloor()" ng-disabled="albumForm.$invalid">
+                    Сохранить карту
+                    <i class="glyphicon glyphicon-ok-sign" aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
+    </form>
+    <div class="popup" ng-if="$ctrl.formError">
+            <span class="popup__btn_close" ng-click="$ctrl.closePopup()"><i
+                    class="glyphicon glyphicon-remove"></i></span>
+        <div class="popup__msg">
+            {{$ctrl.popupMsg}}
+        </div>
+    </div>
+</div>

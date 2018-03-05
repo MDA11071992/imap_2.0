@@ -1,0 +1,52 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+
+  .header__logo {
+    margin: 15px;
+    .header__logo__brand {
+      img {
+        background-color: #fff;
+        padding: 20px;
+      }
+    }
+  }
+  .header__clock {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 300px;
+    height: 140px;
+    padding: 10px 50px;
+    border-radius: 0 0 0 70px;
+    background: green;
+    font-style: italic;
+    color: white;
+    font-weight: bold;
+    .header__clock_time {
+      font-size: 5.2rem;
+    }
+    .header__clock_day {
+      text-align: center;
+      font-size: 2.6rem;
+    }
+  }
+  .header__tel {
+    align-self: flex-end;
+    margin: 0 15px 15px 0;
+    .header__tel__num {
+      font-size: 3rem;
+      color: green;
+      font-weight: bold;
+      font-style: italic;
+      i {
+        border-radius: 50%;
+        border: 1px solid green;
+        margin-left: 5px;
+        padding: 10px;
+        font-size: 3.5rem;
+        color: green;
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+<div class="building-list">
+    <h1>Здания</h1>
+    <ul>
+    <li ng-repeat="building in $ctrl.buildings" class="building-list__item">
+        <h3>{{building.name}}</h3>
+        <ul class="floor-list">
+            <li ng-repeat="floor in building.floors" class="floor-list__item">
+                Этаж: {{floor.number}}
+                <a href ui-sref="admin.buildingList.floorUpdate({ buildingId: building.id, floorId: floor.id })" class="floor-list__item_edit">
+                    <i class="glyphicon glyphicon-pencil"></i>
+                </a>
+                <a href ng-click="$ctrl.removeFloor(floor, $index, building.id)" class="floor-list__item_delete">
+                    <i class="glyphicon glyphicon-remove"></i>
+                </a>
+            </li>
+            <li class="floor-list__item"><a href ui-sref="admin.buildingList.floorCreate({ buildingId: building.id })" class="floor-list__item_add"><i class="glyphicon glyphicon-plus-sign"></i>Добавить</a></li>
+        </ul>
+    </li>
+    </ul>
+</div>
